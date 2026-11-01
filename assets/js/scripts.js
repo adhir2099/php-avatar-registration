@@ -31,8 +31,7 @@ $(function () {
     }
   });
 
-  // Fetch users on load
-  fetchUser();
+  if ($result.length) fetchUser();
 
   async function fetchUser() {
     try {

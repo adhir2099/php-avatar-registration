@@ -2,11 +2,14 @@
 
     function makeImage(string $character): string
     {
-        $character = strtoupper(trim($character));
+        if (!mb_check_encoding($character, 'UTF-8')) {
+            throw new InvalidArgumentException('Character must be valid UTF-8');
+        }
+        $character = mb_strtoupper(trim($character), 'UTF-8');
         if ($character === '') {
             throw new InvalidArgumentException('Character cannot be empty');
         }
-        $character = $character[0];
+        $character = mb_substr($character, 0, 1, 'UTF-8');
 
         $baseDir = __DIR__ . '/../assets/';
         $imageDir = $baseDir . 'img/profile/';
@@ -16,8 +19,8 @@
             throw new RuntimeException('Font file not found');
         }
 
-        if (!is_dir($imageDir)) {
-            mkdir($imageDir, 0755, true);
+        if (!is_dir($imageDir) && !mkdir($imageDir, 0755, true) && !is_dir($imageDir)) {
+            throw new RuntimeException('Failed to create image directory');
         }
 
         $size = 200;
@@ -48,6 +51,9 @@
         $filePath = $imageDir . $fileName;
 
         if (!imagepng($image, $filePath)) {
+            if (is_file($filePath)) {
+                unlink($filePath);
+            }
             throw new RuntimeException('Failed to save image');
         }
 

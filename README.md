@@ -1,7 +1,7 @@
 ![Bootstrap v6](https://img.shields.io/badge/Bootstrap-V6-orange)
 ![Responsive](https://img.shields.io/badge/Responsive-Yes-ff69b4)
 ![Php](https://img.shields.io/badge/PHP-8-red)
-![Ajax](https://img.shields.io/badge/JQuey-Ajax-yellowgreen)
+![Ajax](https://img.shields.io/badge/JQuery-Ajax-yellowgreen)
 
 # Form registration adding image to profile
 Form registration adding image to profile, after submiting the form, a default image with the initial letter of the user name is created, so you can upload your favorite image later.
@@ -35,4 +35,4 @@ Run `php tests/run.php` for the regression checks. Tests also require PDO SQLite
 4. Push to the branch: `git push origin your-branch`
 5. Submit a PR
 
-<p align="right" > Created with ☕❤️ by <a href="https://github.com/adhir2099">Adhir2099</a></p>
+<p align="right" > Created with ☕+❤️ by <a href="https://github.com/adhir2099">Adhir2099</a></p>
